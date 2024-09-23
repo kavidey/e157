@@ -39,7 +39,7 @@ def hl_envelopes_idx(s, dmin=1, dmax=1, split=False):
 # %%
 start_freq = 2e6
 end_freq = 13e6
-start_t = 127920
+start_t = 130020
 end_t = 1138060
 # end_t = start_t + 100
 data = pd.read_csv("data/SDS00013.csv", skiprows=11)
@@ -51,6 +51,14 @@ w_size = 10
 lmin, lmax = hl_envelopes_idx(volt, split=True, dmin=w_size, dmax=w_size)
 env_v = volt[lmax]
 env_f = freq[lmax]
+# %%
+plt.plot(freq/1e6, volt, label="Voltage", zorder=-1)
+plt.axvline(6.835, label="min", zorder=1, c='green')
+plt.axvline(3.418, label="max", zorder=1, c='red')
+plt.xlabel("Frequency [MHz]")
+plt.ylabel("Voltage [V]")
+plt.legend()
+plt.show()
 # %%
 max_peaks, _ = find_peaks(env_v, width=1e3, distance=1e4)
 min_peaks, _ = find_peaks(-env_v, width=1e3, distance=1e4)
