@@ -21,6 +21,15 @@ vna_short = Network('schematics/p2a.vna_short.s1p')
 vna_short.plot_s_smith()
 # %%
 vna_short_10m = Network('schematics/p2a.vna_short.10m.s1p')
-# vna_short_10m.s = vna_short.s * np.expand_dims(np.linspace(1, 0.9, len(vna_short_10m.s)), (1,2))
+vna_short_10m.s = vna_short_10m.s * np.expand_dims(np.linspace(1, 0.9, vna_short_10m.s.shape[0]), (1,2))
 vna_short_10m.plot_s_smith()
+# %%
+lmatch_none = Network('l_match/p3.no_match.s1p')
+lmatch_none.plot_s_smith()
+# %%
+lmatch_l = Network('l_match/p3.l.s1p')
+lmatch_l.plot_s_smith()
+# %%
+lmatch_lc = Network('l_match/p3.lc.s1p')
+lmatch_lc.plot_s_smith()
 # %%
