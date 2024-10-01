@@ -37,3 +37,18 @@ plt.xlabel("Frequency [MHz]")
 plt.ylabel("Phase [deg]")
 plt.grid()
 # %%
+mag = pd.read_csv("data/CSV32.csv", skiprows=13, header=None, names=["frequency", "db"])
+phase = pd.read_csv("data/CSV31.csv", skiprows=13, header=None, names=["frequency", "phase"])
+# %%
+plt.ylim(-50, 50)
+plt.plot(mag.frequency/1e6, mag.db)
+plt.xlabel("Frequency [MHz]")
+plt.ylabel("Gain [dB]")
+plt.grid()
+# %%
+plt.ylim(-300, 300)
+plt.plot(phase.frequency/1e6, phase.phase)
+plt.xlabel("Frequency [MHz]")
+plt.ylabel("Phase [deg]")
+plt.grid()
+# %%
