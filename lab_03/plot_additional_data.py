@@ -52,3 +52,24 @@ plt.xlabel("Frequency [MHz]")
 plt.ylabel("Phase [deg]")
 plt.grid()
 # %%
+# reflection coefficient of 270 ohm resistor
+smith = pd.read_csv("data/CSV23.csv", skiprows=13, header=None, names=["frequency", "real", "imag", "other", "label"])
+print(np.mean(np.abs(smith.real+1j*smith.imag)))
+# %%
+import plotly.express as px
+mag = pd.read_csv("data/CSV36.csv", skiprows=13, header=None, names=["frequency", "db"])
+fig = px.line(mag, x="frequency", y="db")
+fig.show()
+# %%
+f0 = 100e6
+fs = [80.6e6, 145.9e6]
+plt.plot(mag.frequency, mag.db)
+plt.axhline(-6.3, c='r')
+plt.scatter(fs, [-6.3, -6.3], c='g')
+plt.grid()
+plt.xlabel("Frequency [Hz]")
+plt.ylabel("Magnitude [dB]")
+
+Q = f0/(fs[1]-fs[0])
+print(Q)
+# %%
