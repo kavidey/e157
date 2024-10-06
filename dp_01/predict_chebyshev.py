@@ -14,7 +14,7 @@ B = (1/order) * np.arccosh(1/epsilon)
 def omega_over_omega_c_prime(omega_over_omega_c):
     return omega_over_omega_c*np.cosh(B)
 # %%
-f = np.logspace(7, 8.5, 1000)
+f = np.linspace(70e6, 130e6, 1000)
 fc = 100e6
 
 A_dB = 10 * np.log10(1+(epsilon**2)*(chebyshev_3rd_order(omega_over_omega_c_prime(f/fc))**2))
@@ -33,6 +33,7 @@ ax1.get_xaxis().set_minor_formatter(matplotlib.ticker.ScalarFormatter())
 
 ax1.axhline(-1, c="r", label='-1 dB')
 ax1.legend()
+plt.savefig('report/figures/2.mag.png')
 # %%
 passband_ripple = np.min(-A_dB[f<70e6])
 print(f"Passband Ripple: {passband_ripple}")
