@@ -69,3 +69,11 @@ ideal_sim_wide_data = pd.read_csv('schematics/Simulation/ideal_sim.wide.csv')
 
 plot_s_params(ideal_sim_wide_data)
 # %%
+real_sim_data = pd.read_csv('schematics/Simulation/real_sim.csv')
+real_sim_s11 = Network(frequency=real_sim_data.Hz_real, s=real_sim_data.s_1_1_real + 1j * real_sim_data.s_1_1_imag)
+real_sim_s21 = Network(frequency=real_sim_data.Hz_real, s=real_sim_data.s_2_1_real + 1j * real_sim_data.s_2_1_imag)
+plot_data(real_sim_s11)
+plt.show()
+plot_data(real_sim_s21)
+plt.show()
+# %%

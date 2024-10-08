@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.3.14)  5 OCT 2024 17:29
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.3.14)  7 OCT 2024 18:56
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -409,8 +409,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 79--79
 [1
 
 ]
-File: example-image-a.pdf Graphic file (type pdf)
-<use example-image-a.pdf>
+File: figures/2.ideal_componets.png Graphic file (type bmp)
+<figures/2.ideal_componets.png>
 File: example-image-a.pdf Graphic file (type pdf)
 <use example-image-a.pdf>
 File: example-image-a.pdf Graphic file (type pdf)
@@ -420,36 +420,27 @@ Underfull \hbox (badness 10000) in paragraph at lines 121--124
 
  []
 
-File: figures/2.attenuation_characteristics.png Graphic file (type bmp)
-<figures/2.attenuation_characteristics.png>
+File: figures/3.attenuation_characteristics.png Graphic file (type bmp)
+<figures/3.attenuation_characteristics.png>
 
 Underfull \hbox (badness 10000) in paragraph at lines 126--138
 
  []
 
-File: figures/2.mag.png Graphic file (type bmp)
-<figures/2.mag.png>
-File: figures/2.filter_table.png Graphic file (type bmp)
-<figures/2.filter_table.png>
-[3] [4]
+File: figures/3.mag.png Graphic file (type bmp)
+<figures/3.mag.png>
+File: figures/3.filter_table.png Graphic file (type bmp)
+<figures/3.filter_table.png>
+[3] [4] [5]
 File: example-image-a.pdf Graphic file (type pdf)
 <use example-image-a.pdf>
 File: example-image-b.pdf Graphic file (type pdf)
 <use example-image-b.pdf>
 File: example-image-c.pdf Graphic file (type pdf)
 <use example-image-c.pdf>
-File: example-image-a.pdf Graphic file (type pdf)
-<use example-image-a.pdf>
- [5]
 File: example-image-a.pdf Graphic file (type pdf)
 <use example-image-a.pdf>
  [6]
-File: example-image-a.pdf Graphic file (type pdf)
-<use example-image-a.pdf>
-File: example-image-b.pdf Graphic file (type pdf)
-<use example-image-b.pdf>
-File: example-image-c.pdf Graphic file (type pdf)
-<use example-image-c.pdf>
 File: example-image-a.pdf Graphic file (type pdf)
 <use example-image-a.pdf>
  [7]
@@ -466,6 +457,15 @@ File: example-image-a.pdf Graphic file (type pdf)
 <use example-image-a.pdf>
 File: example-image-b.pdf Graphic file (type pdf)
 <use example-image-b.pdf>
+File: example-image-c.pdf Graphic file (type pdf)
+<use example-image-c.pdf>
+File: example-image-a.pdf Graphic file (type pdf)
+<use example-image-a.pdf>
+ [9]
+File: example-image-a.pdf Graphic file (type pdf)
+<use example-image-a.pdf>
+File: example-image-b.pdf Graphic file (type pdf)
+<use example-image-b.pdf>
 File: example-image-a.pdf Graphic file (type pdf)
 <use example-image-a.pdf>
 File: example-image-b.pdf Graphic file (type pdf)
@@ -474,7 +474,7 @@ File: example-image-c.pdf Graphic file (type pdf)
 <use example-image-c.pdf>
 File: example-image-a.pdf Graphic file (type pdf)
 <use example-image-a.pdf>
- [9] [10] [11] (./report.aux)
+ [10] [11] [12] (./report.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -483,12 +483,12 @@ Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: D1D2A582D5303859122342F4358729D8;1836.
  ) 
 Here is how much of TeX's memory you used:
- 11239 strings out of 474773
- 181695 string characters out of 5757724
+ 11260 strings out of 474773
+ 182396 string characters out of 5757724
  1931839 words of memory out of 5000000
- 33256 multiletter control sequences out of 15000+600000
+ 33276 multiletter control sequences out of 15000+600000
  561903 words of font info for 57 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  72i,12n,79p,409b,558s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on report.xdv (11 pages, 44900 bytes).
+Output written on report.xdv (12 pages, 45960 bytes).

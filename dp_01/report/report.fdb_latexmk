@@ -1,11 +1,11 @@
 # Fdb version 4
-["xdvipdfmx"] 1728174591.89193 "report.xdv" "report.pdf" "report" 1728174592.41598 0
-  "report.xdv" 1728174591.85405 44900 3b66babb7113b94778aff31be40a6eee "xelatex"
+["xdvipdfmx"] 1728352566.74528 "report.xdv" "report.pdf" "report" 1728352567.4266 0
+  "report.xdv" 1728352566.70079 45960 b09c47d1ffd2800036795a66e011a15c "xelatex"
   (generated)
   "report.pdf"
   (rewritten before read)
-["xelatex"] 1728174591.37708 "/Users/kavidey/Sync/Mudd/FA24/E157/dp_01/report/report.tex" "report.xdv" "report" 1728174592.41514 0
-  "/Users/kavidey/Sync/Mudd/FA24/E157/dp_01/report/report.tex" 1728174591.17542 16581 4daf51584e2381142adb36ebbb7f2cc6 ""
+["xelatex"] 1728352566.15986 "/Users/kavidey/Sync/Mudd/FA24/E157/dp_01/report/report.tex" "report.xdv" "report" 1728352567.42569 0
+  "/Users/kavidey/Sync/Mudd/FA24/E157/dp_01/report/report.tex" 1728352565.94941 16807 11ed95b5fee5c2199b881b15bbefac4a ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -86,12 +86,13 @@
   "/usr/local/texlive/2024/texmf-dist/web2c/texmf.cnf" 1708706663 41649 5d6ae549fbbcb850a863f69aa41f3d10 ""
   "/usr/local/texlive/2024/texmf-var/web2c/xetex/xelatex.fmt" 1710432876 10850173 605464e756af7f96087604ea03317332 ""
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
-  "figures/2.attenuation_characteristics.png" 1728172220.76635 145397 8b8e1c29eaa96419b93a4036a0c950ec ""
-  "figures/2.filter_table.png" 1728172626.40244 112080 a0838fb9cefb389a593fc1340ef59790 ""
-  "figures/2.mag.png" 1728172531.83957 22802 3de28fee66f565b04bc0c41184c74aa2 ""
-  "report.aux" 1728174591.85256 2582 1e7f0c8b517816679ac0567e545e5ab3 "xelatex"
-  "report.out" 1728174591.8536 1836 d1d2a582d5303859122342f4358729d8 "xelatex"
-  "report.tex" 1728174591.17542 16581 4daf51584e2381142adb36ebbb7f2cc6 ""
+  "figures/2.ideal_componets.png" 1728352484.18218 41815 df132cca501efe173659199bda5355bc ""
+  "figures/3.attenuation_characteristics.png" 1728172220.76635 145397 8b8e1c29eaa96419b93a4036a0c950ec ""
+  "figures/3.filter_table.png" 1728172626.40244 112080 a0838fb9cefb389a593fc1340ef59790 ""
+  "figures/3.mag.png" 1728172531.83957 22802 3de28fee66f565b04bc0c41184c74aa2 ""
+  "report.aux" 1728352566.69948 2583 71c8b35a91e196a889d4b64c1c968a03 "xelatex"
+  "report.out" 1728352566.7003 1836 d1d2a582d5303859122342f4358729d8 "xelatex"
+  "report.tex" 1728352565.94941 16807 11ed95b5fee5c2199b881b15bbefac4a ""
   (generated)
   "report.aux"
   "report.log"

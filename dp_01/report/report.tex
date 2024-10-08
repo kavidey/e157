@@ -87,7 +87,7 @@
 \begin{figure}[H]
     \begin{subfigure}[t]{0.5\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{example-image-a}
+        \includegraphics[width=\linewidth]{figures/2.ideal_componets}
         \caption{Ideal Components}
     \end{subfigure}
 
@@ -126,7 +126,7 @@ We can then normalize the attenuation requirements to use attenuation curves:
 \end{align*}
 Now we want to select a normalized lowpass filter that offers at least 20 dB of attenuation at a ratio of $f/f_c = 2$.
 \begin{figure}[ht] 
-    \centering \includegraphics[width=0.5\columnwidth]{figures/2.attenuation_characteristics}
+    \centering \includegraphics[width=0.5\columnwidth]{figures/3.attenuation_characteristics}
     \caption{
             \label{fig:2.attenuation_characteristics}
             Attenuation characteristics for a Chebyshev filter with 0.5-dB ripple.
@@ -139,12 +139,15 @@ We can predict the attenuation as a function of frequency using
     A_\text{dB}=10\log\left[1+\epsilon^2C_n^2\left(\frac{\omega}{\omega_c}\right)'\right]
 \end{align*}
 Where:
-$\epsilon=\sqrt{10^{R_\text{dB}/10}-1} = 0.3493$, 
-$\left(\frac{\omega}{\omega_c}\right)' = \left(\frac{\omega}{\omega_c}\right) \cosh B, B=\frac{1}{n}\cosh^{-1}\left(\frac{1}{\epsilon}\right)$,
-and $C^2_3(x)=4x^3-3x$. \\
+\begin{enumerate}
+  \item $\epsilon=\sqrt{10^{R_\text{dB}/10}-1} = 0.3493$ ($R_{dB}$ = 1 dB is the allowable passband ripple)
+  \item $\left(\frac{\omega}{\omega_c}\right)' = \left(\frac{\omega}{\omega_c}\right) \cosh B$
+  \item $B=\frac{1}{n}\cosh^{-1}\left(\frac{1}{\epsilon}\right)$
+  \item $C_3(x)=4x^3-3x$
+\end{enumerate}
 Plotting this in python (\href{https://github.com/kavidey/e157/blob/main/dp_01/predict_chebyshev.py}{code link}) we get:
 \begin{figure}[ht] 
-    \centering \includegraphics[width=0.5\columnwidth]{figures/2.mag}
+    \centering \includegraphics[width=0.5\columnwidth]{figures/3.mag}
     \caption{
             \label{fig:2.mag}
             Attenuation characteristics for a Chebyshev filter with 0.5-dB ripple.
@@ -153,7 +156,7 @@ Plotting this in python (\href{https://github.com/kavidey/e157/blob/main/dp_01/p
 Extracting the pass band ripple from the graph we get 0.5 dB, as predicted from the filter table in figure \ref{fig:2.filter_table}
 The same table can also be used to calculate component values for $n=3$ and $R_S/R_L = 1$ as follows
 \begin{figure}[H] 
-    \centering \includegraphics[width=0.3\columnwidth]{figures/2.filter_table}
+    \centering \includegraphics[width=0.3\columnwidth]{figures/3.filter_table}
     \caption{
             \label{fig:2.filter_table}
             Chebyshev Low-Pass Prototype Element Values for 0.5-dB Ripple.
@@ -162,7 +165,7 @@ The same table can also be used to calculate component values for $n=3$ and $R_S
 \begin{align*}
     C_1 = \frac{1.864}{2\pi(100\times10^6)50} = 59.33 \text{ pF} \\
     L_2 = \frac{(1.280)(50)}{2\pi(100\times10^6)} = 101.86 \text{ nH} \\
-    C_3 = \frac{1.864}{2\pi(100\times10^6)50} = 59.33 \text{ pF}
+    C_3 = \frac{1.834}{2\pi(100\times10^6)50} = 58.37 \text{ pF}
 \end{align*}
 Because we are making a lowpass filter, we can use the provided schematic as is. We have chosen to use the \textbf{top} schematic in \ref{fig:2.filter_table}.
 
@@ -351,7 +354,7 @@ Because we are making a lowpass filter, we can use the provided schematic as is.
 \newpage
 \section{Discussions}
 % Discussion of discrepancies between analytical, simulated and measured results.  Quantitatively justify differences between them, including any modifications you made to your models to make your simulations match your measurements better (e.g.: board parasitics).  Refer to prior figures in your report for supporting evidence in this discussion.
-
+% Issue: the table assumed that we wanted the corner frequency to be at -3db, not -1db as the filter specs say.
 \newpage
 \section{Takeaways}
 % One paragraph about one thing you learned about RF design doing this project.
