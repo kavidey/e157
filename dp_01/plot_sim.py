@@ -33,5 +33,6 @@ real_pass = pd.read_csv("sim/real.pass.txt", skiprows=1, names=['f', 'S11r', 'S1
 real_pass_s11 = Network(frequency=real_pass.f, s=real_pass.S11r + 1j * real_pass.S11i)
 real_pass_s21 = Network(frequency=real_pass.f, s=real_pass.S21r + 1j * real_pass.S21i)
 
-util.plot_network(real_pass_s21)
+# util.plot_network(real_pass_s21)
+util.plot_s21_mag(real_pass_s21)
 # %%

@@ -183,12 +183,12 @@ The input wave has a power of
 $$P=\left(\frac{1 \ V}{2\sqrt{2}}\right)^2 \frac{1}{50 \Omega} = 2.5 \text{ mW} \approx 4 \text{ dBm}$$
 50 MHz is a low enough frequency that we can assume the only loss is due to insertion loss (see page \pageref{sec:s21_dcstop} for insertion loss measurement).
 Then the total power delivered into the load is:
-$$4 \text{ dBm} - \text{Insertion Loss} = 4 \text{ dBm} - 0.84 \text{ dBm} = 3.16 \text{ dBm} \approx 2 \text{ dBm} $$
+$$4 \text{ dBm} - \text{Insertion Loss} = 4 \text{ dBm} - 0.84 \text{ dBm} = 3.16 \text{ dBm} \approx 2 \text{ mW} $$
 
 \newpage
 \section{Magnitude of S21 in Pass band}
 % Magnitude of S21 in your pass band for all four designs
-% •	Use the frequency range 70MHz-130MHz.  Display in on a linear scale.
+% •	Use the frequency range 40MHz-130MHz.  Display in on a linear scale.
 % •	Use dB as your y-axis units
 % •	Do not overlay these graphs.  Please include four of them in a 2x2 grid.
 % •	Each representation needs to include annotated markers that show the magnitude and frequency of 
@@ -218,7 +218,7 @@ $$4 \text{ dBm} - \text{Insertion Loss} = 4 \text{ dBm} - 0.84 \text{ dBm} = 3.1
     \hfill
     \begin{subfigure}[t]{.49\textwidth}
       \centering
-      \includegraphics[width=\linewidth]{example-image-a}
+      \includegraphics[width=\linewidth]{figures/4.assembled}
       \caption{Assembled Design}
     \end{subfigure}
   \end{figure}
@@ -226,7 +226,7 @@ $$4 \text{ dBm} - \text{Insertion Loss} = 4 \text{ dBm} - 0.84 \text{ dBm} = 3.1
 \newpage
 \section{Phase of S21 in Pass band}
 % Phase of S21 in your pass band for three designs: the ideal simulation, the real simulation and the measured design.
-% •	Use the frequency range 70MHz-130MHz.  Display in on a linear scale.
+% •	Use the frequency range 40MHz-130MHz.  Display in on a linear scale.
 % •	Use degrees between -180/+180 as your y-axis units (i.e.: provide a wrapped phase plot)
 % •	Overlay these graphs on one frequency axis.
 % •	Each representation needs to include one annotated marker at the band edge (which you found from your magnitude plot) that shows the phase and frequency.
@@ -268,7 +268,7 @@ $$4 \text{ dBm} - \text{Insertion Loss} = 4 \text{ dBm} - 0.84 \text{ dBm} = 3.1
     \hfill
     \begin{subfigure}[t]{.49\textwidth}
       \centering
-      \includegraphics[width=\linewidth]{example-image-a}
+      \includegraphics[width=\linewidth]{figures/6.assembled}
       \caption{Assembled Design}
     \end{subfigure}
   \end{figure}
@@ -305,7 +305,7 @@ $$4 \text{ dBm} - \text{Insertion Loss} = 4 \text{ dBm} - 0.84 \text{ dBm} = 3.1
     \hfill
     \begin{subfigure}[t]{.49\textwidth}
       \centering
-      \includegraphics[width=\linewidth]{example-image-a}
+      \includegraphics[width=\linewidth]{figures/7.assembled}
       \caption{Assembled Design}
     \end{subfigure}
   \end{figure}
@@ -356,13 +356,13 @@ $$4 \text{ dBm} - \text{Insertion Loss} = 4 \text{ dBm} - 0.84 \text{ dBm} = 3.1
   
     \begin{subfigure}[t]{.49\textwidth}
       \centering
-      \includegraphics[width=\linewidth]{example-image-c}
+      \includegraphics[width=\linewidth]{figures/8.s11.assembled}
       \caption{Assembled Design S11}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{.49\textwidth}
       \centering
-      \includegraphics[width=\linewidth]{example-image-a}
+      \includegraphics[width=\linewidth]{figures/8.s21.assembled}
       \caption{Assembled Design S21}
     \end{subfigure}
 \end{figure}

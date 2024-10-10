@@ -42,12 +42,19 @@ def plot_s21_mag(net, log=True):
 
     plot_s21_metrics(ax1, metrics)
 
-def plot_s21_metrics(ax, metrics):
+def plot_s21_metrics(ax, metrics, skip_ripple=False, skip_stopband=True):
     ax.vlines(metrics['max_gain_freq'], 0, -metrics['insertion_loss'], label=f"Insertion Loss: {metrics['insertion_loss']:.2f} dB", colors='green', linewidth=3)
     ax.scatter([metrics['max_gain_freq'], metrics['max_gain_freq']], [0, -metrics['insertion_loss']], color='green', marker="_", s=50, zorder=5)
-    ax.vlines(metrics['worst_ripple_freq'], -metrics['insertion_loss'], -metrics['insertion_loss']-metrics['inband_ripple'], label=f"Minimum Ripple: {metrics['inband_ripple']:.2f} dB", colors='orange', linewidth=3)
-    ax.scatter([metrics['worst_ripple_freq'], metrics['worst_ripple_freq']], [-metrics['insertion_loss'], -metrics['insertion_loss']-metrics['inband_ripple']], color='orange', marker="_", s=50, zorder=5)
+    
+    if not skip_ripple:
+        ax.vlines(metrics['worst_ripple_freq'], -metrics['insertion_loss'], -metrics['insertion_loss']-metrics['inband_ripple'], label=f"Minimum Ripple: {metrics['inband_ripple']:.2f} dB", colors='orange', linewidth=3)
+        ax.scatter([metrics['worst_ripple_freq'], metrics['worst_ripple_freq']], [-metrics['insertion_loss'], -metrics['insertion_loss']-metrics['inband_ripple']], color='orange', marker="_", s=50, zorder=5)
+    
     ax.scatter(metrics['passband_edge'], -metrics['insertion_loss']-3, label=f"Pass band edge: {metrics['passband_edge']/1e6:.2f} MHz", c='red', zorder=10)
+
+    if not skip_stopband:
+        ax.scatter(metrics['stopband_start'], -metrics['insertion_loss']-20, label=f"Stop band start: {metrics['stopband_start']/1e6:.2f} MHz", c='orange', zorder=10)
+
     ax.legend()
 
 def plot_network(network):
