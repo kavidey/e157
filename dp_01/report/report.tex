@@ -85,25 +85,25 @@
 % •	A schematic with real components 
 % •	A picture of your assembled circuit
 \begin{figure}[H]
-    \begin{subfigure}[t]{0.5\textwidth}
+    \begin{subfigure}[t]{0.8\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{figures/2.ideal_componets}
+        \includegraphics[width=\linewidth]{figures/2.ideal_components}
         \caption{Ideal Components}
     \end{subfigure}
 
     \medskip
 
-    \begin{subfigure}[t]{0.5\textwidth}
+    \begin{subfigure}[t]{0.8\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{example-image-a}
+        \includegraphics[width=\linewidth]{figures/2.real_components}
         \caption{Real Components}
     \end{subfigure}
 
     \medskip
 
-    \begin{subfigure}[t]{0.5\textwidth}
+    \begin{subfigure}[t]{0.8\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{example-image-a}
+        \includegraphics[width=\linewidth]{figures/2.assembled}
         \caption{Assembled Design}
     \end{subfigure}
 \end{figure}
@@ -125,14 +125,20 @@ We can then normalize the attenuation requirements to use attenuation curves:
     \frac{f}{f_c} = \frac{200 \text{ MHz}}{100 \text{ MHz}} = 2
 \end{align*}
 Now we want to select a normalized lowpass filter that offers at least 20 dB of attenuation at a ratio of $f/f_c = 2$.
-\begin{figure}[ht] 
+\begin{figure}[H] 
     \centering \includegraphics[width=0.5\columnwidth]{figures/3.attenuation_characteristics}
     \caption{
             \label{fig:2.attenuation_characteristics}
             Attenuation characteristics for a Chebyshev filter with 0.5-dB ripple.
     }
 \end{figure}
-From the attenuation plot, we can see that a 3rd order chebyshev filter has greater than the required attenuation at $f/f_c=2$ and that the attenuation is equal to 20 dB at $f/f_c \approx 1.7 \implies f_\text{stop band}=170 \text{ MHz}$\\
+\noindent
+From the attenuation plot, we can see that a 3rd order chebyshev filter has greater than the required attenuation at $f/f_c=2$
+% and that the attenuation is equal to 20 dB at $f/f_c \approx 1.7 \implies f_\text{stop band}=170 \text{ MHz}$.
+Extracting the point at which there is 20 dB of rejection from the transfer function numerically, we get $f_\text{stop band}=170 \text{ MHz}$. \\
+\\
+We have chosen to use the 0.5 dB attenuation table, so the expected in band ripple is 0.5 dB.
+At the desired stop band, $f = 200 \text{ MHz} \to f/f_c=2$, we can see that there is 24 dB of attenuation.\\
 \\
 We can predict the attenuation as a function of frequency using
 \begin{align*}
@@ -145,16 +151,16 @@ Where:
   \item $B=\frac{1}{n}\cosh^{-1}\left(\frac{1}{\epsilon}\right)$
   \item $C_3(x)=4x^3-3x$
 \end{enumerate}
-Plotting this in python (\href{https://github.com/kavidey/e157/blob/main/dp_01/predict_chebyshev.py}{code link}) we get:
-\begin{figure}[ht] 
-    \centering \includegraphics[width=0.5\columnwidth]{figures/3.mag}
-    \caption{
-            \label{fig:2.mag}
-            Attenuation characteristics for a Chebyshev filter with 0.5-dB ripple.
-    }
-\end{figure}
-Extracting the pass band ripple from the graph we get 0.5 dB, as predicted from the filter table in figure \ref{fig:2.filter_table}
-The same table can also be used to calculate component values for $n=3$ and $R_S/R_L = 1$ as follows
+% Plotting this in python (\href{https://github.com/kavidey/e157/blob/main/dp_01/predict_chebyshev.py}{code link}) we get:
+% \begin{figure}[ht] 
+%     \centering \includegraphics[width=0.5\columnwidth]{figures/3.mag}
+%     \caption{
+%             \label{fig:2.mag}
+%             Attenuation characteristics for a Chebyshev filter with 0.5-dB ripple.
+%     }
+% \end{figure}
+% Extracting the pass band ripple from the graph we get 0.5 dB, as predicted from the filter table in figure \ref{fig:2.filter_table}
+The following table can be used to calculate component values for $n=3$ and $R_S/R_L = 1$ as follows:
 \begin{figure}[H] 
     \centering \includegraphics[width=0.3\columnwidth]{figures/3.filter_table}
     \caption{
@@ -162,12 +168,22 @@ The same table can also be used to calculate component values for $n=3$ and $R_S
             Chebyshev Low-Pass Prototype Element Values for 0.5-dB Ripple.
     }
 \end{figure}
+\noindent
+Plugging in we get:
 \begin{align*}
     C_1 = \frac{1.864}{2\pi(100\times10^6)50} = 59.33 \text{ pF} \\
     L_2 = \frac{(1.280)(50)}{2\pi(100\times10^6)} = 101.86 \text{ nH} \\
     C_3 = \frac{1.834}{2\pi(100\times10^6)50} = 58.37 \text{ pF}
 \end{align*}
-Because we are making a lowpass filter, we can use the provided schematic as is. We have chosen to use the \textbf{top} schematic in \ref{fig:2.filter_table}.
+Because we are making a lowpass filter, we can use the provided schematic as is. We have chosen to use the \textbf{top} schematic in \ref{fig:2.filter_table}. \\
+\\
+Calculation showing power delivered to a 50 Ohm if your filter were driven by a 1 Vpp, 0 VDC offset, 50 MHz sine wave from a voltage source w/ 50 Ohm output impedance.\\
+\\
+The input wave has a power of
+$$P=\left(\frac{1 \ V}{2\sqrt{2}}\right)^2 \frac{1}{50 \Omega} = 2.5 \text{ mW} \approx 4 \text{ dBm}$$
+50 MHz is a low enough frequency that we can assume the only loss is due to insertion loss (see page \pageref{sec:s21_dcstop} for insertion loss measurement).
+Then the total power delivered into the load is:
+$$4 \text{ dBm} - \text{Insertion Loss} = 4 \text{ dBm} - 0.84 \text{ dBm} = 3.16 \text{ dBm} \approx 2 \text{ dBm} $$
 
 \newpage
 \section{Magnitude of S21 in Pass band}
@@ -220,7 +236,7 @@ Because we are making a lowpass filter, we can use the provided schematic as is.
 \end{figure}
 
 \newpage
-\section{Magnitude of S21 from DC to Stop band}
+\section{Magnitude of S21 from DC to Stop band} \label{sec:s21_dcstop}
 % Magnitude of S21 from DC to your stop band for all four designs
 % •	Use the frequency range 0Hz to 300MHz (or as low as the instrument will go for measurements).  Display your frequency range on a log scale.
 % •	Use dB as your y-axis units.
@@ -355,6 +371,7 @@ Because we are making a lowpass filter, we can use the provided schematic as is.
 \section{Discussions}
 % Discussion of discrepancies between analytical, simulated and measured results.  Quantitatively justify differences between them, including any modifications you made to your models to make your simulations match your measurements better (e.g.: board parasitics).  Refer to prior figures in your report for supporting evidence in this discussion.
 % Issue: the table assumed that we wanted the corner frequency to be at -3db, not -1db as the filter specs say.
+% Inspecting the analytical Chebyshev 1 attenuation plot, we find that we would need to adjust f_c from 100 MHz to 111.5 MHz for the attenuation to be 1db at 100 MHz. This would result in a stop band edge of 196.1 MHz, which is still within the desired filter parameters.
 \newpage
 \section{Takeaways}
 % One paragraph about one thing you learned about RF design doing this project.
