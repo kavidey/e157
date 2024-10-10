@@ -15,6 +15,27 @@ B = (1/order) * np.arccosh(1/epsilon)
 def omega_over_omega_c_prime(omega_over_omega_c):
     return omega_over_omega_c*np.cosh(B)
 # %%
+f = np.linspace(40e6, 130e6, 1000)
+fc = 100e6
+
+A_dB = -10 * np.log10(1+(epsilon**2)*(chebyshev_3rd_order(omega_over_omega_c_prime(f/fc))**2))
+
+metrics = util.calc_s21_metrics(f, A_dB)
+
+fig1, ax1 = plt.subplots()
+ax1.grid(which='both')
+ax1.set_axisbelow(True)
+ax1.set_xscale('log')
+
+ax1.plot(f, A_dB, zorder=-1)
+
+util.plot_s21_metrics(ax1, metrics)
+
+ax1.set_xlabel("Frequency (Hz)")
+ax1.set_ylabel("Magnitude (dB)")
+
+plt.savefig('report/figures/4.analytical.pdf')
+# %%
 f = np.linspace(1, 300e6, 1000)
 fc = 100e6
 
@@ -40,9 +61,41 @@ util.plot_s21_metrics(ax1, metrics, skip_ripple=True, skip_stopband=False)
 ax1.set_xlabel("Frequency (Hz)")
 ax1.set_ylabel("Magnitude (dB)")
 
-print(f"Insertion Loss: {metrics['insertion_loss']}")
-print(f"Pass band Edge: {metrics['passband_edge'] / 1e6} MHz")
-print(f"Stop band Start: {metrics['stopband_start'] / 1e6} MHz")
-print(f"In band Ripple: {metrics['inband_ripple']}")
 plt.savefig('report/figures/6.analytical.pdf')
+# %%
+S21 = np.power(10, A_dB)
+S11 = np.sqrt(1-S21**2)
+
+fig1, ax1 = plt.subplots()
+ax1.grid(which='both')
+ax1.set_axisbelow(True)
+ax1.set_xscale('log')
+
+s11_db = 10*np.log10(S11)
+
+ax1.plot(f, s11_db, zorder=-1)
+
+passband_freq = util.calc_s21_metrics(f, A_dB)['passband_edge']
+stopband_freq = util.calc_s21_metrics(f, A_dB)['stopband_start']
+
+passband_db = s11_db[util.find_nearest_idx(f, passband_freq)]
+ax1.scatter(
+    passband_freq,
+    passband_db,
+    c='red', zorder=10,
+    label=f"Pass band edge: {passband_db:.2f} dB at {passband_freq / 1e6:.2f} MHz"
+)
+stopband_db = s11_db[util.find_nearest_idx(f, stopband_freq)]
+ax1.scatter(
+    stopband_freq,
+    stopband_db,
+    c='orange', zorder=10,
+    label=f"Stop band edge: {stopband_db:.2f} dB at {stopband_freq / 1e6:.2f} MHz"
+)
+ax1.legend()
+
+ax1.set_xlabel("Frequency (Hz)")
+ax1.set_ylabel("Magnitude (dB)")
+
+plt.savefig("report/figures/7.analytical.pdf")
 # %%
