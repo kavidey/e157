@@ -41,15 +41,27 @@ ax1.grid(which='both')
 passband_freq = util.calc_s21_metrics(s21_pass.f, s21_pass.s_db)['passband_edge']
 stopband_freq = util.calc_s21_metrics(s21_dc_stop.f, s21_dc_stop.s_db)['stopband_start']
 
-ax1.scatter(passband_freq, s11_dc_stop.s_db[util.find_nearest_idx(s11_dc_stop.f, passband_freq)], c='red', zorder=10, label=f"Pass band edge: {passband_freq / 1e6:.2f} MHz")
-ax1.scatter(stopband_freq, s11_dc_stop.s_db[util.find_nearest_idx(s11_dc_stop.f, stopband_freq)], c='orange', zorder=10, label=f"Stop band edge: {stopband_freq / 1e6:.2f} MHz")
+passband_db = s11_dc_stop.s_db[util.find_nearest_idx(s11_dc_stop.f, passband_freq)]
+ax1.scatter(
+    passband_freq,
+    passband_db,
+    c='red', zorder=10,
+    label=f"Pass band edge: {passband_db[0,0]:.2f} dB at {passband_freq / 1e6:.2f} MHz"
+)
+stopband_db = s11_dc_stop.s_db[util.find_nearest_idx(s11_dc_stop.f, stopband_freq)]
+ax1.scatter(
+    stopband_freq,
+    stopband_db,
+    c='orange', zorder=10,
+    label=f"Stop band edge: {stopband_db[0,0]:.2f} dB at {stopband_freq / 1e6:.2f} MHz"
+)
 
 ax1.legend()
 plt.savefig("report/figures/7.assembled.pdf")
 # %%
-s11_dc_stop.plot_s_smith(label=None)
+s11_dc_stop.plot_s_smith(show_legend=False)
 plt.savefig("report/figures/8.s11.assembled.pdf")
 # %%
-s21_dc_stop.plot_s_smith(label=None)
+s21_dc_stop.plot_s_smith(show_legend=False)
 plt.savefig("report/figures/8.s21.assembled.pdf")
 # %%
