@@ -2,6 +2,9 @@ import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 
+def resistance_reactance_to_gamma(resistance, reactance):
+    return ((resistance/50+1j*reactance/50) - 1) / ((resistance/50+1j*reactance/50) + 1)
+
 def find_nearest_idx(array, value):
     array = np.asarray(array)
     idx = (np.abs(array - value)).argmin()
