@@ -15,28 +15,7 @@ B = (1/order) * np.arccosh(1/epsilon)
 def omega_over_omega_c_prime(omega_over_omega_c):
     return omega_over_omega_c*np.cosh(B)
 # %%
-f = np.linspace(40e6, 130e6, 1000)
-fc = 100e6
-
-A_dB = -10 * np.log10(1+(epsilon**2)*(chebyshev_3rd_order(omega_over_omega_c_prime(f/fc))**2))
-
-metrics = util.calc_s21_metrics(f, A_dB)
-
-fig1, ax1 = plt.subplots()
-ax1.grid(which='both')
-ax1.set_axisbelow(True)
-ax1.set_xscale('log')
-
-ax1.plot(f, A_dB, zorder=-1)
-
-util.plot_s21_metrics(ax1, metrics)
-
-ax1.set_xlabel("Frequency (Hz)")
-ax1.set_ylabel("Magnitude (dB)")
-
-plt.savefig('report/figures/4.analytical.pdf')
-# %%
-f = np.linspace(1, 300e6, 1000)
+f = np.logspace(0, np.log10(300e6), 10000)
 fc = 100e6
 
 A_dB = -10 * np.log10(1+(epsilon**2)*(chebyshev_3rd_order(omega_over_omega_c_prime(f/fc))**2))
@@ -56,7 +35,9 @@ ax1.set_xscale('log')
 
 ax1.plot(f, A_dB, zorder=-1)
 
-util.plot_s21_metrics(ax1, metrics, skip_ripple=True, skip_stopband=False)
+util.plot_s21_dc_stop_metrics(ax1, metrics)
+
+ax1.set_xlim(f[0], f[-1])
 
 ax1.set_xlabel("Frequency (Hz)")
 ax1.set_ylabel("Magnitude (dB)")
@@ -64,7 +45,7 @@ ax1.set_ylabel("Magnitude (dB)")
 plt.savefig('report/figures/6.analytical.pdf')
 # %%
 S21 = np.power(10, A_dB)
-S11 = np.sqrt(1-S21**2)
+S11 = np.sqrt(1-np.power(S21,2))
 
 fig1, ax1 = plt.subplots()
 ax1.grid(which='both')
@@ -94,8 +75,51 @@ ax1.scatter(
 )
 ax1.legend()
 
+ax1.set_xlim(f[0], f[-1])
+
 ax1.set_xlabel("Frequency (Hz)")
 ax1.set_ylabel("Magnitude (dB)")
 
 plt.savefig("report/figures/7.analytical.pdf")
+# %%
+f = np.logspace(np.log10(40e6), np.log10(130e6), 10000)
+fc = 100e6
+
+A_dB = -10 * np.log10(1+(epsilon**2)*(chebyshev_3rd_order(omega_over_omega_c_prime(f/fc))**2))
+
+metrics = util.calc_s21_metrics(f, A_dB, provided_insertion_loss=metrics['insertion_loss'])
+
+fig1, ax1 = plt.subplots()
+ax1.grid(which='both')
+ax1.set_axisbelow(True)
+ax1.set_xscale('linear')
+
+ax1.plot(f, A_dB, zorder=-10)
+
+util.plot_s21_pass_metrics(ax1, metrics, 0)
+
+ax1.set_xlim(f[0], f[-1])
+
+ax1.set_xlabel("Frequency (Hz)")
+ax1.set_ylabel("Magnitude (dB)")
+
+plt.savefig('report/figures/4.analytical.pdf')
+# %%
+f = np.logspace(0, np.log10(300e6), 10000)
+fc = 111.4396e6
+
+A_dB = -10 * np.log10(1+(epsilon**2)*(chebyshev_3rd_order(omega_over_omega_c_prime(f/fc))**2))
+
+print(f[util.find_nearest_idx(A_dB, -1)])
+print(f[util.find_nearest_idx(A_dB, -20)])
+
+fig1, ax1 = plt.subplots()
+ax1.grid(which='both')
+ax1.set_axisbelow(True)
+ax1.set_xscale('log')
+
+ax1.plot(f, A_dB, zorder=-1)
+
+ax1.set_xlabel("Frequency (Hz)")
+ax1.set_ylabel("Magnitude (dB)")
 # %%

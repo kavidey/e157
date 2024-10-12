@@ -1,0 +1,64 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global}
+    \entry{Bowick2007-br}{book}{}
+      \name{author}{3}{}{%
+        {{hash=5e2522d38ac3726b1537a07c1f23dcd6}{%
+           family={Bowick},
+           familyi={B\bibinitperiod},
+           given={Christopher},
+           giveni={C\bibinitperiod}}}%
+        {{hash=4bdf9278de2b446b5c32b95df44fd86a}{%
+           family={Ajluni},
+           familyi={A\bibinitperiod},
+           given={Cheryl},
+           giveni={C\bibinitperiod}}}%
+        {{hash=3bc2ec10f3c912bc2184e1e8debf457b}{%
+           family={Blyler},
+           familyi={B\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {London, England}%
+      }
+      \list{publisher}{1}{%
+        {Newnes}%
+      }
+      \strng{namehash}{bc242d5d44670728f995ca1da2fea19a}
+      \strng{fullhash}{bc242d5d44670728f995ca1da2fea19a}
+      \strng{bibnamehash}{bc242d5d44670728f995ca1da2fea19a}
+      \strng{authorbibnamehash}{bc242d5d44670728f995ca1da2fea19a}
+      \strng{authornamehash}{bc242d5d44670728f995ca1da2fea19a}
+      \strng{authorfullhash}{bc242d5d44670728f995ca1da2fea19a}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{2}
+      \field{month}{10}
+      \field{title}{{RF} Circuit Design}
+      \field{year}{2007}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
