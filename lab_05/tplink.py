@@ -43,8 +43,9 @@ plt.show()
 # $$ \Gamma = \frac{Z_l-Z_0}{Z_l+Z_0} \implies Z_l = Z_0 \frac{1+\Gamma}{1-\Gamma} $$
 # $$ RL = 20 \log_{10}(|\Gamma|) \implies |\Gamma| = 10^{RL/20}$$
 # %%
-gamma = np.power(10, net.s21.s_db.flatten() / 20)
+gamma = np.power(10, net.s11.s_db.flatten() / 20)
 Zl = 50 * (1+gamma)/(1-gamma)
+plt.ylim(0, 200)
 plt.plot(net.f, Zl)
 plt.grid()
 plt.xlabel("Frequency [Hz]")
