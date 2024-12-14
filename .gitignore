@@ -1,2 +1,4 @@
 .DS_Store
 __pycache__
+dp_02/receiver/data/SDS00001.csv
+dp_02/receiver/data/SDS00008.csv

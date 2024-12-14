@@ -7,11 +7,8 @@ import matplotlib.pyplot as plt
 
 data_path = Path("data/")
 # %%
-# np.savez_compressed(data_path/"tree.npz", pd.read_csv(data_path / "SDS00001.csv", skiprows=11).to_numpy())
-# np.savez_compressed(data_path/"physics_door.npz", pd.read_csv(data_path / "SDS00002.csv", skiprows=11).to_numpy())
-# np.savez_compressed(data_path/"close.npz", pd.read_csv(data_path / "SDS00003.csv", skiprows=11).to_numpy())
-# np.savez_compressed(data_path/"womens_bathroom.npz", pd.read_csv(data_path / "SDS00004.csv", skiprows=11).to_numpy())
-np.savez_compressed(data_path/"3m.npz", pd.read_csv(data_path / "SDS00005.csv", skiprows=11).to_numpy())
+np.savez_compressed(data_path/"3m.npz", pd.read_csv(data_path / "SDS00001.csv", skiprows=11).to_numpy())
+np.savez_compressed(data_path/"maxm.npz", pd.read_csv(data_path / "SDS00008.csv", skiprows=11).to_numpy())
 # %%
 sample = np.load(data_path/"3m.npz")['arr_0'].T
 fs = 1/(sample[0,1] - sample[0,0])

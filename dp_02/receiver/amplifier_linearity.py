@@ -58,6 +58,10 @@ plt.plot(IIP3, OIP3)
 
 plt.scatter(IP3[0], IP3[1], label=f"IP3: ({IP3[0]:.2f}, {IP3[1]:.2f})", zorder=10)
 
+IIP3_theoretical = -62.5
+OIP3_theoretical = 7
+plt.scatter(IIP3_theoretical, OIP3_theoretical, label=f"Theoretical IP3: ({IIP3_theoretical}, {OIP3_theoretical})", zorder=10)
+
 plt.grid()
 plt.legend()
 
